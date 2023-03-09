@@ -1,5 +1,5 @@
 import sqlite3
-connectionsql = sqlite3.connect('customers.db')
+connectionsql = sqlite3.connect('data/customers.db')
 conCursor = connectionsql.cursor()
 
 def show_all():
