@@ -13,15 +13,20 @@ def show_all():
     continueInput = input('Pressione [ENTER] Para Continuar... ')
     print('\n')
 
-def addNewItens(first_name,last_name,age,email):
+def addNewItem(first_name,last_name,age,email):
     conCursor.execute(f"""
     INSERT INTO customers VALUES ('{first_name}','{last_name}','{age}','{email}')
     """)
     connectionsql.commit() #Send Commands
 
-def updateItens(updateItemType,updateValue, id):
+def updateItem(updateItemType,updateValue, id):
     conCursor.execute(f"""
         UPDATE customers SET '{updateItemType}' = '{updateValue}' WHERE rowid = {id}
+    """)
+
+def deleteItem(id):
+    conCursor.execute(f"""
+        DELETE FROM customers WHERE rowid = {id}
     """)
 
 def disconnect():

@@ -2,6 +2,7 @@ import data.database as db
 
 def start():
     while 1:
+        print("\n")
         print('-----------------------')
         print('1 - Visualizar Banco De Dados')
         print('2 - Adicionar Novas Informacoes Ao Banco De Dados')
@@ -20,7 +21,7 @@ def start():
             lastname = input('Qual Segundo Nome Do Cliente: ')
             age = int(input('Qual Idade Do Cliente: '))
             email = input('Qual Email Do Cliente: ')
-            db.addNewItens(firstname,lastname,age,email)
+            db.addNewItem(firstname,lastname,age,email)
 
         if(command == 3):
             print('\n')
@@ -35,19 +36,23 @@ def start():
             updateItem = int(input('Digite o numero correspondente ao item: '))             
             if(updateItem == 1):
                 updateValue = input('Digite o novo valor desse item: ')      
-                db.updateItens('first_name',updateValue,id)
+                db.updateItem('first_name',updateValue,id)
             if(updateItem == 2):
                 updateValue = input('Digite o novo valor desse item: ')      
-                db.updateItens('last_name',updateValue,id)
+                db.updateItem('last_name',updateValue,id)
             if(updateItem == 3):
                 updateValue = input('Digite o novo valor desse item: ')      
-                db.updateItens('age',updateValue,id)
+                db.updateItem('age',updateValue,id)
             if(updateItem == 4):
                 updateValue = input('Digite o novo valor desse item: ')      
-                db.updateItens('email',updateValue,id)
+                db.updateItem('email',updateValue,id)
             if(updateItem == 5):
                 return start()
             
+        if(command == 4):
+            id = int(input('Digite o ID Do Cliente: '))
+            db.deleteItem(id)
+            print(f"ID ({id}), Foi deletado do banco de dados!")
 
         if(command == 5):
             db.disconnect()
